@@ -46,4 +46,7 @@ $ ./gradlew.bat -p 'homework\lesson_6\andrey.fedosenko' check
 BUILD SUCCESSFUL
 
 Total time: 2.243 secs
+
+$ java -cp build/libs/homework/lesson_6/andrey.fedosenko.jar Main
+
 ```
