@@ -48,5 +48,17 @@ BUILD SUCCESSFUL
 Total time: 2.243 secs
 
 $ java -cp build/libs/homework/lesson_6/andrey.fedosenko.jar Main
-
+Vasil Pupkin, 24 years old, rating: 1
+Dadya Fedor, 21 years old, rating: 2
+GROUP: Jelementary, No. 12, Students:
+                -> Vasil Pupkin, 24 years old, rating: 1
+GROUP: Q&A, No. 13, Students:  no students.
+SCHOOL: Hillel, Address: Kanatnaya str., Groups:
+         GROUP: Jelementary, No. 12, Students:
+                -> Vasil Pupkin, 24 years old, rating: 1
+         GROUP: Q&A, No. 13, Students:  no students.
+         GROUP: English intermidiate, No. 7, Students:
+                -> Vasil Pupkin, 24 years old, rating: 1
+                -> Dadya Fedor, 21 years old, rating: 2
+SCHOOL: IT school, Address: Paustovskogo str., Groups: no groups
 ```
