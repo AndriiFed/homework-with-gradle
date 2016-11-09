@@ -12,7 +12,7 @@ public class FixedRateEmployee extends Employee {
   private static final int WORKING_DAYS_PER_TWO_WEEKS = 5 * 2;
   private static final int WORKING_DAYS_PER_MONTH = 5 * 4;
 
-  public float salary = 0;
+  public float salary;
 
   public FixedRateEmployee(String name, float daysalary, PaymentPeriod period) {
     this.name = name;
@@ -21,20 +21,37 @@ public class FixedRateEmployee extends Employee {
   }
 
   public void setWorkingHours(int workingHours) {
-    if (period == PaymentPeriod.WEEKLY && workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_WEEK) {
-      salaryflag = 0;
-      return;
+    if (period == PaymentPeriod.WEEKLY) {
+      if (workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_WEEK) {
+        salaryflag = 0;
+        return;
+      } else if (workingHours > WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_WEEK) {
+        salaryflag = (int) workingHours / (WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_WEEK);
+        return;
+      }
     }
-    if (period == PaymentPeriod.BIWEEKLY && workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_TWO_WEEKS) {
-      salaryflag = 0;
-      return;
+    if (period == PaymentPeriod.BIWEEKLY) {
+      if (workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_TWO_WEEKS) {
+        salaryflag = 0;
+        return;
+      } else if (workingHours > WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_TWO_WEEKS) {
+        salaryflag = (int) workingHours / (WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_TWO_WEEKS);
+        return;
+      }
     }
-    if (period == PaymentPeriod.MONTHLY && workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_MONTH) {
-      salaryflag = 0;
+    if (period == PaymentPeriod.MONTHLY) {
+      if (workingHours < WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_MONTH) {
+        salaryflag = 0;
+        return;
+      } else if (workingHours > WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_MONTH) {
+        salaryflag = (int) workingHours / (WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_MONTH);
+        return;
+      }
     }
   }
 
   public float calculatePayment() {
+    salary = 0;
     switch (period) {
       case WEEKLY: salary += daysalary * WORKING_DAYS_PER_WEEK;
         break;
