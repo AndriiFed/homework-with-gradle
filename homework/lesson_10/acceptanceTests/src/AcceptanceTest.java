@@ -81,6 +81,15 @@ public class AcceptanceTest {
   }
 
   @Test
+  public void simpleFixedPriceTest_whenWorkedTwoWholePaymentPeriod_shouldReceivePaymentForBoth() {
+    worker1.setWorkingHours(Payable.WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_MONTH * 2);
+    worker2.setWorkingHours(Payable.WORKING_HOURS_PER_DAY * WORKING_DAYS_PER_TWO_WEEKS * 2);
+
+    assertThat((double)worker1.calculatePayment(), is(closeTo(10.00 * 2 * WORKING_DAYS_PER_MONTH, 0.01)));
+    assertThat((double)worker2.calculatePayment(), is(closeTo(25.00 * 2 * WORKING_DAYS_PER_TWO_WEEKS, 0.01)));
+  }
+
+  @Test
   public void hourlyRatedEmployeesShouldReceive_theMultiplicationOf_rateAndHours() {
     worker3.setWorkingHours(Payable.WORKING_HOURS_PER_DAY * 10);
     worker4.setWorkingHours(Payable.WORKING_HOURS_PER_DAY * 2);
