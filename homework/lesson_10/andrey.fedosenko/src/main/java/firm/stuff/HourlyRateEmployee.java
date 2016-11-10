@@ -8,7 +8,7 @@ public class HourlyRateEmployee extends Employee {
   private int workingHours = 0;
 
   public HourlyRateEmployee(String name, float hoursalary) {
-    this.name = name;
+    super(name);
     this.hoursalary = hoursalary;
   }
 
@@ -20,7 +20,4 @@ public class HourlyRateEmployee extends Employee {
     return workingHours * hoursalary;
   }
 
-  public String getName() {
-    return name;
-  }
 }

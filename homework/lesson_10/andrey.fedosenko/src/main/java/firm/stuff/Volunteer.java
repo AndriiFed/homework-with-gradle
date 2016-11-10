@@ -6,17 +6,13 @@ public class Volunteer extends Employee {
   private String name;
 
   public Volunteer(String name) {
-    this.name = name;
+    super(name);
   }
 
   public void setWorkingHours(int workingHours) {}
 
   public float calculatePayment() {
     return 0f;
-  }
-
-  public String getName() {
-    return name;
   }
 
 }
