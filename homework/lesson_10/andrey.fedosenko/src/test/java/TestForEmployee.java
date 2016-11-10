@@ -4,6 +4,7 @@ import org.junit.Before;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 import firm.stuff.FixedRateEmployee;
 import firm.stuff.Volunteer;
@@ -37,8 +38,7 @@ public class TestForEmployee {
 
   @Test
   public void simpleVolunteer_getNameTest() {
-    assertThat(volunteer1.getName(), is("Linus Tovalds"));
+    assertThat(volunteer1.getName(), equalTo("Linus Tovalds"));
   }
-
 
 }
