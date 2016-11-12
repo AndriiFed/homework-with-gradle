@@ -4,15 +4,15 @@ import firm.Employee;
 
 public class HourlyRateEmployee extends Employee {
   private String name;
-  private float hoursalary;
+  private float hourSalary;
 
-  public HourlyRateEmployee(String name, float hoursalary) {
+  public HourlyRateEmployee(String name, float hourSalary) {
     super(name);
-    this.hoursalary = hoursalary;
+    this.hourSalary = hourSalary;
   }
 
   public float calculatePayment() {
-    return getWorkingHours() * hoursalary;
+    return getWorkingHours() * hourSalary;
   }
 
 }

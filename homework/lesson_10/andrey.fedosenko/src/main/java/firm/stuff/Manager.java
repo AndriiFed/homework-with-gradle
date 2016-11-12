@@ -3,6 +3,8 @@ package firm.stuff;
 import firm.PaymentPeriod;
 import firm.stuff.FixedRateEmployee;
 
+import java.lang.Float;
+
 public class Manager extends FixedRateEmployee {
   private float bonus;
 
@@ -15,7 +17,12 @@ public class Manager extends FixedRateEmployee {
   }
 
   public float calculatePayment() {
-    return super.calculatePayment() + bonus;
+    float salary = super.calculatePayment();
+    if (Float.compare(salary, 0f) == 0) {
+      return 0f;
+    } else {
+      return super.calculatePayment() + bonus;
+    }
   }
 
 }
