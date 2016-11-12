@@ -11,5 +11,4 @@ public class Volunteer extends Employee {
   public float calculatePayment() {
     return 0f;
   }
-
 }
