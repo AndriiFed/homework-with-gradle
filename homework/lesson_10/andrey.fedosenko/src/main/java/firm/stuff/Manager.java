@@ -21,7 +21,7 @@ public class Manager extends FixedRateEmployee {
     if (Float.compare(salary, 0f) == 0) {
       return 0f;
     } else {
-      return super.calculatePayment() + bonus;
+      return salary + bonus;
     }
   }
 
