@@ -3,9 +3,7 @@ package algo;
 public abstract class BinarySearch {
 
   public final int perform(Object[] unsorted, Object toFind) {
-    // your code here
-    Object[] objects;
-    objects = sort(unsorted);
+    Object[] objects = sort(unsorted);
     return binarySearch(objects, toFind);
   }
 
@@ -28,7 +26,6 @@ public abstract class BinarySearch {
       }
     }
     return -(low + 1);
-
   }
 
 }

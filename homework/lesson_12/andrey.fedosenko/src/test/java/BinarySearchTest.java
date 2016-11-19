@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.is;
 
 import algo.BinarySearch;
 import algo.BubbleSortBinarySearch;
+import algo.InsertionSortBinarySearch;
 
 import java.util.Arrays;
 
@@ -60,10 +61,60 @@ public class BinarySearchTest {
     MyObject[] objects = {obj1, obj2, obj3};
     int index = bin.perform(objects, obj2);
 
-    //assertThat(index, is(1)); // here we don't have what we would expect.
-    // The position is 0, not 1, which is a result of sort function inside BinarySearch.perform() method.
-    // Therefore, we implement technically incorrect implementation. It works correctly only for sorted arrays ¯\_(ツ)_/¯
-    // Even though the behaviour is incorrect for unsorted arrays case, for educational purposes it's fine :)
+    assertThat(index, is(0));
+  }
+
+  @Test
+  public void test_InsertionSortBinarySearch_WithUnSortedArray() {
+    BinarySearch bin = new InsertionSortBinarySearch();
+
+    MyObject obj1 = new MyObject();
+    MyObject obj2 = new MyObject();
+    MyObject obj3 = new MyObject();
+    MyObject obj4 = new MyObject();
+    MyObject obj5 = new MyObject();
+    MyObject obj6 = new MyObject();
+
+    obj1.value = 2;
+    obj2.value = 1;
+    obj3.value = 3;
+    obj4.value = 4;
+    obj5.value = 6;
+    obj6.value = 5;
+
+    MyObject[] objects = {obj1, obj2, obj3, obj4, obj5, obj6};
+    int index = bin.perform(objects, obj5);
+
+    assertThat(index, is(5));
+  }
+
+  @Test
+  public void test_InsertionSortBinarySearch_WithSortedArray() {
+    BinarySearch bin = new InsertionSortBinarySearch();
+
+    MyObject obj1 = new MyObject();
+    MyObject obj2 = new MyObject();
+    MyObject obj3 = new MyObject();
+    MyObject obj4 = new MyObject();
+    MyObject obj5 = new MyObject();
+    MyObject obj6 = new MyObject();
+
+    obj1.value = 1;
+    obj2.value = 2;
+    obj3.value = 3;
+    obj4.value = 4;
+    obj5.value = 5;
+    obj6.value = 6;
+
+    MyObject[] objects = {obj1, obj2, obj3, obj4, obj5, obj6};
+    int index = bin.perform(objects, obj1);
+
+    /* // Sorting test
+    for (int i = 0; i < objects.length; i++) {
+      System.out.println(objects[i].value);
+    }
+    */
+
     assertThat(index, is(0));
   }
 
