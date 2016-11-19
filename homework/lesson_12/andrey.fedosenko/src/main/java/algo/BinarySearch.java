@@ -1,12 +1,10 @@
 package algo;
 
-import java.util.Arrays;
-
 public abstract class BinarySearch {
-  Object[] objects;
 
   public final int perform(Object[] unsorted, Object toFind) {
     // your code here
+    Object[] objects;
     objects = sort(unsorted);
     return binarySearch(objects, toFind);
   }
