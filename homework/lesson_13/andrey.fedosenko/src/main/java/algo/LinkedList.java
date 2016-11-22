@@ -112,11 +112,11 @@ public class LinkedList<T> implements List<T> {
     size--;
   }
 
-  public IteratorCl<T> iterator() {
+  public Iterator<T> iterator() {
     return new IteratorCl<T>(firstNode);
   }
 
-  public ReverseIteratorCl<T> reverseIterator() {
+  public ReverseIterator<T> reverseIterator() {
     return new ReverseIteratorCl<T>(lastNode);
   }
 
