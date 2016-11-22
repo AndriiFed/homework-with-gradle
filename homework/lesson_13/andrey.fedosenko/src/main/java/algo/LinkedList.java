@@ -15,7 +15,7 @@ public class LinkedList<T> implements List<T> {
     }
   }
 
-  public class IteratorCl<T> implements Iterator {
+  public class IteratorCl<T> implements Iterator<T> {
     Node<T> current;
 
     public IteratorCl(Node<T> newNode) {
@@ -33,7 +33,7 @@ public class LinkedList<T> implements List<T> {
     }
   }
 
-  public class ReverseIteratorCl<T> implements ReverseIterator {
+  public class ReverseIteratorCl<T> implements ReverseIterator<T> {
     Node<T> current;
 
     public ReverseIteratorCl(Node<T> newNode) {
@@ -113,11 +113,11 @@ public class LinkedList<T> implements List<T> {
   }
 
   public IteratorCl<T> iterator() {
-    return new IteratorCl<>(firstNode);
+    return new IteratorCl<T>(firstNode);
   }
 
   public ReverseIteratorCl<T> reverseIterator() {
-    return new ReverseIteratorCl<>(lastNode);
+    return new ReverseIteratorCl<T>(lastNode);
   }
 
 }
