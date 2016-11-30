@@ -13,11 +13,27 @@ public class Expression {
     String[] splitArray  = buffer.split(" |\\)");
     buffer = splitArray[0];
     numSize = buffer.length();
-    System.out.println(buffer);
     return Double.parseDouble(buffer);
   }
 
+  private boolean isRightExpression(String exprStr) {
+    int exprLength = exprStr.length();
+
+    if (exprStr.length() < 7) {
+      return false;
+    }
+
+    if (!exprStr.substring(0, 1).equals("(") || !exprStr.substring(exprLength - 1, exprLength).equals(")")) {
+      return false;
+    }
+    return true;
+  }
+
   public double evaluate(String exprStr) {
+
+    if (!isRightExpression(exprStr)) {
+      return 0.0;
+    }
 
     for (int i = 0; i < exprStr.length(); i++) {
       char ch = exprStr.charAt(i);
@@ -30,19 +46,19 @@ public class Expression {
       } else if (ch == ')') {
         double result = operands.pop();
         char operations = operators.pop();
-        System.out.println(operations);
         switch (operations) {
           case '+': result += operands.pop();
             break;
-          case '-': result -= operands.pop();
+          case '-':  result = operands.pop() - result;
             break;
           case '*': result *= operands.pop();
             break;
-          case '/': result /= operands.pop();
+          case '/': result = operands.pop() / result;
             break;
           default:
         }
         operands.push(result);
+
       }
     }
     return operands.pop();

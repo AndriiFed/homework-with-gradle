@@ -1,6 +1,8 @@
-import algo.eval.Expression;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import algo.eval.Expression;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,43 +17,26 @@ public class ExpressionEvalTests {
   }
 
   @Test
-  public void testSimpleExpression() throws Exception {
-
-    assertThat(expression.evaluate("(1 + ((2 + 3) * (4 * 5)))"), is(101.0));
+  public void testSimpleNullExpression() throws Exception {
+    assertThat(expression.evaluate(""), is(0.0));
+    assertThat(expression.evaluate("("), is(0.0));
+    assertThat(expression.evaluate(")"), is(0.0));
+    assertThat(expression.evaluate("()"), is(0.0));
   }
 
   @Test
-  public void testExpressionWithDivision() throws Exception {
-
-    assertThat(expression.evaluate("(1 + ((8 / 2) * (4 / 2)))"), is(9.0));
+  public void testNoBracketExpression() throws Exception {
+    assertThat(expression.evaluate("1 + 1"), is(0.0));
+    assertThat(expression.evaluate("1000 + 23"), is(0.0));
+    assertThat(expression.evaluate("(1000 + 23"), is(0.0));
+    assertThat(expression.evaluate("(1000 + 23"), is(0.0));
+    assertThat(expression.evaluate("(1000 - 23)"), is(977.0));
   }
 
   @Test
-  public void testExpressionWithDivision2() throws Exception {
-
-    assertThat(expression.evaluate("(1 + (2 / 4))"), is(1.5));
+  public void testBigAndSmallNumbersExpression() throws Exception {
+    assertThat(expression.evaluate("(1000 + ((200 + 100) * (20 / 5)))"), is(2200.0));
   }
 
-  @Test
-  public void testExpressionWithSubstraction() throws Exception {
 
-    assertThat(expression.evaluate("(1 + ((4 - 2) + (4 - 8)))"), is(-1.0));
-  }
-
-  @Test
-  public void allOperationsTest() throws Exception {
-
-    assertThat(expression.evaluate("(4 + ((4 * 2) / (4 - 8)))"), is(2.0));
-  }
-
-  @Test
-  public void allOperationsTestWithBiggerNumbers() throws Exception {
-
-    assertThat(expression.evaluate("(40 + 40)"), is(80.0));
-    assertThat(expression.evaluate("(40 * 40)"), is(1600.0));
-    assertThat(expression.evaluate("(40 - 40)"), is(0.0));
-    assertThat(expression.evaluate("(40 / 40)"), is(1.0));
-
-    //assertThat(expression.evaluate("(40 + ((40 * 20) / (40 - 80)))"), is(20.0));
-  }
 }
